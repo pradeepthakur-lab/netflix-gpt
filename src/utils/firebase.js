@@ -24,3 +24,7 @@ const analytics = getAnalytics(app);
 export const auth = getAuth();
 
 // https://netflixgpt-4e0ba.web.app
+
+// 73523b2f8571486e49b7370022a27b67
+// token
+// eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MzUyM2IyZjg1NzE0ODZlNDliNzM3MDAyMmEyN2I2NyIsIm5iZiI6MTcyNDQ5NjM0OS4wMzg0Mywic3ViIjoiNjZjOWI4ZDliZmU0ZDA2ZmI3YjExN2EyIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.IY4eZ7wQM5OdV9qw0uce2577NHhl6XsIuFOj443U3hU
