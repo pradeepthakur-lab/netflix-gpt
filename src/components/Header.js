@@ -7,11 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../redux/slice/userSlice";
+import { toggleGptSearchView } from '../hooks/gptSlice';
+import { changeLanguage } from '../redux/slice/configSlice';
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();  
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  
 
   useEffect(() => {    
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -35,13 +39,23 @@ const Header = () => {
       // An error happened.
     });
   }
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  }
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value))
+  }
+
+
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
       <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
         <div className="flex p-2 justify-between">
             <select
               className="p-2 m-2 bg-gray-900 text-white"
-              // onChange={handleLanguageChange}
+              onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.identifier} value={lang.identifier}>
@@ -51,10 +65,9 @@ const Header = () => {
             </select>
           <button
             className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
-            // onClick={handleGptSearchClick}
+            onClick={handleGptSearchClick}
           >
-            {/* {showGptSearch ? "Homepage" : "GPT Search"} */}
-            Homepage
+            {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
           {user && (
               <>
